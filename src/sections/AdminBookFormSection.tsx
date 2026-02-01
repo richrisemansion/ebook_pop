@@ -306,9 +306,25 @@ const AdminBookFormSection: React.FC<AdminBookFormSectionProps> = ({ onBack, edi
                             )}
 
                             {existingBook?.pdfUrl && !pdfFile && (
-                                <p className="mt-2 text-sm text-black/60">
-                                    มี PDF อยู่แล้ว อัปโหลดใหม่เพื่อแทนที่
-                                </p>
+                                <div className="mt-3 p-3 bg-gray-50 border-2 border-black/10 rounded-xl flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-8 h-8 bg-memphis-purple/20 text-memphis-purple rounded-lg flex items-center justify-center">
+                                            <FileText className="w-4 h-4" />
+                                        </div>
+                                        <div className="text-sm">
+                                            <p className="font-semibold text-black/80">ไฟล์ปัจจุบัน</p>
+                                            <a
+                                                href={existingBook.pdfUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-xs text-memphis-blue hover:underline font-medium"
+                                            >
+                                                คลิกเพื่อดูไฟล์เดิม
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <span className="text-xs text-black/40">อัปโหลดใหม่เพื่อแทนที่</span>
+                                </div>
                             )}
                         </div>
                     </div>
