@@ -350,8 +350,8 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
                                         </>
                                     )}
 
-                                    {/* Show Resend button if verified (even if already sent) */}
-                                    {selectedOrderData.status === 'verified' && (
+                                    {/* Show Resend button if verified or completed */}
+                                    {['verified', 'completed'].includes(selectedOrderData.status) && (
                                         <button
                                             onClick={() => handleResendPdfs(selectedOrderData.id)}
                                             className="flex-1 btn-memphis bg-memphis-pink flex items-center justify-center gap-2 text-white"
