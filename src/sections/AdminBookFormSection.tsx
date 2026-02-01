@@ -16,18 +16,39 @@ const AdminBookFormSection: React.FC<AdminBookFormSectionProps> = ({ onBack, edi
     const existingBook = isEditing ? books.find(b => b.id === editBookId) : null;
 
     const [formData, setFormData] = useState({
-        title: existingBook?.title || '',
-        subtitle: existingBook?.subtitle || '',
-        description: existingBook?.description || '',
-        price: existingBook?.price || 299,
-        originalPrice: existingBook?.originalPrice || 0,
-        category: (existingBook?.category || 'baby') as AgeCategory,
-        ageRange: existingBook?.ageRange || '0-2 ปี',
-        pages: existingBook?.pages || 100,
-        features: existingBook?.features?.join('\n') || '',
-        isNew: existingBook?.isNew || false,
-        isBestseller: existingBook?.isBestseller || false,
+        title: '',
+        subtitle: '',
+        description: '',
+        price: 299,
+        originalPrice: 0,
+        category: 'baby' as AgeCategory,
+        ageRange: '0-2 ปี',
+        pages: 100,
+        features: '',
+        isNew: false,
+        isBestseller: false,
     });
+
+    // Update form data when existingBook is loaded
+    React.useEffect(() => {
+        if (existingBook) {
+            setFormData({
+                title: existingBook.title,
+                subtitle: existingBook.subtitle || '',
+                description: existingBook.description || '',
+                price: existingBook.price,
+                originalPrice: existingBook.originalPrice || 0,
+                category: (existingBook.category || 'baby') as AgeCategory,
+                ageRange: existingBook.ageRange || '0-2 ปี',
+                pages: existingBook.pages || 100,
+                features: existingBook.features?.join('\n') || '',
+                isNew: existingBook.isNew || false,
+                isBestseller: existingBook.isBestseller || false,
+            });
+            setCoverPreview(existingBook.image || '');
+            // PDF file input cannot be programmatically set, but we show existing status in UI
+        }
+    }, [existingBook]);
 
     const [coverFile, setCoverFile] = useState<File | null>(null);
     const [coverPreview, setCoverPreview] = useState<string>(existingBook?.image || '');
