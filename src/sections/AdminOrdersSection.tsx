@@ -39,30 +39,50 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
         return matchesStatus && matchesSearch;
     });
 
-    const handleVerify = async (orderId: string) => {
-        const success = await updateOrderStatus(orderId, 'verified');
-        if (success) {
-            toast.success('ยืนยันการชำระเงินสำเร็จ!');
-        } else {
-            toast.error('เกิดข้อผิดพลาด');
+    const handleVerifyAndSend = async (orderId: string) => {
+        const loadingToast = toast.loading('กำลังดำเนินการ...');
+
+        try {
+            // 1. Verify Payment
+            const verifySuccess = await updateOrderStatus(orderId, 'verified');
+            if (!verifySuccess) {
+                toast.error('ยืนยันยอดเงินไม่สำเร็จ', { id: loadingToast });
+                return;
+            }
+
+            // 2. Send PDFs
+            const sendSuccess = await markPdfsSent(orderId);
+            if (sendSuccess) {
+                toast.success('ยืนยันยอดเงินและส่ง PDF เรียบร้อยแล้ว!', { id: loadingToast });
+                setSelectedOrder(null); // Close dialog
+            } else {
+                toast.warning('ยืนยันยอดเงินแล้ว แต่ส่ง PDF ไม่สำเร็จ กรุณาลองใหม่', { id: loadingToast });
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error('เกิดข้อผิดพลาด', { id: loadingToast });
         }
     };
 
     const handleReject = async (orderId: string) => {
+        if (!confirm('ยืนยันที่จะปฏิเสธคำสั่งซื้อนี้?')) return;
+
         const success = await updateOrderStatus(orderId, 'cancelled', 'Slip ไม่ถูกต้อง');
         if (success) {
             toast.success('ปฏิเสธคำสั่งซื้อแล้ว');
+            setSelectedOrder(null);
         } else {
             toast.error('เกิดข้อผิดพลาด');
         }
     };
 
-    const handleSendPdfs = async (orderId: string) => {
+    const handleResendPdfs = async (orderId: string) => {
+        const loadingToast = toast.loading('กำลังส่งอีเมล...');
         const success = await markPdfsSent(orderId);
         if (success) {
-            toast.success('ส่ง PDF สำเร็จ!');
+            toast.success('ส่ง PDF ซ้ำเรียบร้อยแล้ว!', { id: loadingToast });
         } else {
-            toast.error('เกิดข้อผิดพลาด');
+            toast.error('ส่ง PDF ไม่สำเร็จ', { id: loadingToast });
         }
     };
 
@@ -212,31 +232,12 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
                                             </button>
 
                                             {order.status === 'paid' && (
-                                                <>
-                                                    <button
-                                                        onClick={() => handleVerify(order.id)}
-                                                        className="p-2 bg-memphis-green border-2 border-black rounded-lg hover:opacity-80 transition-opacity"
-                                                        title="ยืนยัน"
-                                                    >
-                                                        <CheckCircle className="w-5 h-5" />
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleReject(order.id)}
-                                                        className="p-2 bg-red-100 border-2 border-black rounded-lg hover:bg-red-200 transition-colors"
-                                                        title="ปฏิเสธ"
-                                                    >
-                                                        <XCircle className="w-5 h-5" />
-                                                    </button>
-                                                </>
-                                            )}
-
-                                            {order.status === 'verified' && !order.pdfs_sent && (
                                                 <button
-                                                    onClick={() => handleSendPdfs(order.id)}
-                                                    className="p-2 bg-memphis-pink text-white border-2 border-black rounded-lg hover:opacity-80 transition-opacity"
-                                                    title="ส่ง PDF"
+                                                    onClick={() => handleVerifyAndSend(order.id)}
+                                                    className="p-2 bg-memphis-green border-2 border-black rounded-lg hover:opacity-80 transition-opacity"
+                                                    title="ยืนยันและส่ง PDF"
                                                 >
-                                                    <Mail className="w-5 h-5" />
+                                                    <CheckCircle className="w-5 h-5" />
                                                 </button>
                                             )}
                                         </div>
@@ -328,41 +329,34 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
                                 )}
 
                                 {/* Actions */}
-                                <div className="flex gap-2 pt-4">
+                                <div className="flex flex-col md:flex-row gap-2 pt-4">
                                     {selectedOrderData.status === 'paid' && (
                                         <>
                                             <button
-                                                onClick={() => {
-                                                    handleVerify(selectedOrderData.id);
-                                                    setSelectedOrder(null);
-                                                }}
+                                                onClick={() => handleVerifyAndSend(selectedOrderData.id)}
                                                 className="flex-1 btn-memphis bg-memphis-green flex items-center justify-center gap-2"
                                             >
                                                 <CheckCircle className="w-5 h-5" />
-                                                ยืนยันการชำระ
+                                                ยืนยันยอดเงิน & ส่ง PDF
                                             </button>
                                             <button
-                                                onClick={() => {
-                                                    handleReject(selectedOrderData.id);
-                                                    setSelectedOrder(null);
-                                                }}
-                                                className="flex-1 btn-memphis bg-red-500 flex items-center justify-center gap-2"
+                                                onClick={() => handleReject(selectedOrderData.id)}
+                                                className="flex-1 btn-memphis bg-red-white text-red-600 border-red-200 flex items-center justify-center gap-2 hover:bg-red-50"
                                             >
                                                 <XCircle className="w-5 h-5" />
                                                 ปฏิเสธ
                                             </button>
                                         </>
                                     )}
-                                    {selectedOrderData.status === 'verified' && !selectedOrderData.pdfs_sent && (
+
+                                    {/* Show Resend button if verified (even if already sent) */}
+                                    {selectedOrderData.status === 'verified' && (
                                         <button
-                                            onClick={() => {
-                                                handleSendPdfs(selectedOrderData.id);
-                                                setSelectedOrder(null);
-                                            }}
-                                            className="flex-1 btn-memphis bg-memphis-pink flex items-center justify-center gap-2"
+                                            onClick={() => handleResendPdfs(selectedOrderData.id)}
+                                            className="flex-1 btn-memphis bg-memphis-pink flex items-center justify-center gap-2 text-white"
                                         >
                                             <Mail className="w-5 h-5" />
-                                            ส่ง PDF ให้ลูกค้า
+                                            {selectedOrderData.pdfs_sent ? 'ส่ง PDF ซ้ำ' : 'ส่ง PDF ให้ลูกค้า'}
                                         </button>
                                     )}
                                 </div>
