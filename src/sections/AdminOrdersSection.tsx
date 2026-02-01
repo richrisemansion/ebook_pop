@@ -330,21 +330,22 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
 
                                 {/* Actions */}
                                 <div className="flex flex-col md:flex-row gap-2 pt-4">
-                                    {selectedOrderData.status === 'paid' && (
+                                    {/* Actions for Pending and Paid orders */}
+                                    {['pending', 'paid'].includes(selectedOrderData.status) && (
                                         <>
                                             <button
                                                 onClick={() => handleVerifyAndSend(selectedOrderData.id)}
                                                 className="flex-1 btn-memphis bg-memphis-green flex items-center justify-center gap-2"
                                             >
                                                 <CheckCircle className="w-5 h-5" />
-                                                ยืนยันยอดเงิน & ส่ง PDF
+                                                {selectedOrderData.status === 'pending' ? 'ยืนยันยอดเงิน (Manual)' : 'ยืนยันยอดเงิน & ส่ง PDF'}
                                             </button>
                                             <button
                                                 onClick={() => handleReject(selectedOrderData.id)}
                                                 className="flex-1 btn-memphis bg-red-white text-red-600 border-red-200 flex items-center justify-center gap-2 hover:bg-red-50"
                                             >
                                                 <XCircle className="w-5 h-5" />
-                                                ปฏิเสธ
+                                                {selectedOrderData.status === 'pending' ? 'ยกเลิกออเดอร์' : 'ปฏิเสธสลิป'}
                                             </button>
                                         </>
                                     )}
