@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>What Brains Need Before Preschool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @page { size: A4; margin: 1.5cm; @bottom-center { content: counter(page); font-size: 10pt; color: #FFBE0B; font-weight: bold; } }
+        @page :first { margin: 0; @bottom-center { content: none; } }
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 12pt;
+            line-height: 1.9;
+            color: #333;
+        }
+        
+        /* Cover */
+        .cover {
+            width: 210mm; height: 297mm; margin: 0;
+            position: relative; overflow: hidden;
+            page-break-after: always;
+            background: linear-gradient(135deg, #FFBE0B 0%, #FFD54F 50%, #FFECB3 100%);
+        }
+        
+        .cover-brain {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 200pt;
+            opacity: 0.3;
+        }
+        
+        .cover-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 85%;
+            z-index: 10;
+        }
+        
+        .cover-icon { font-size: 80pt; margin-bottom: 20px; }
+        .cover-title { font-size: 32pt; font-weight: 800; color: #000; text-shadow: 3px 3px 0 #fff; margin-bottom: 10px; }
+        .cover-subtitle { font-size: 16pt; color: #5D4037; margin-bottom: 40px; font-weight: 600; }
+        .cover-badge { display: inline-block; background: #FF006E; color: #fff; padding: 10px 25px; border-radius: 30px; font-weight: 700; font-size: 12pt; }
+        
+        /* Content Styles */
+        h1 { font-size: 22pt; font-weight: 800; color: #FFBE0B; margin: 30px 0 15px; padding: 15px; background: #FFF8E1; border-radius: 15px; border-left: 6px solid #FFBE0B; }
+        h2 { font-size: 16pt; font-weight: 700; color: #F57C00; margin: 25px 0 12px; }
+        h3 { font-size: 14pt; font-weight: 700; color: #E65100; margin: 20px 0 10px; }
+        
+        p { margin-bottom: 15px; }
+        
+        /* Cartoon Boxes */
+        .fun-box {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border: 3px solid #FF9800;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .fun-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 30pt;
+            background: #fff;
+            border-radius: 50%;
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        
+        .brain-tip {
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border: 3px solid #4CAF50;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .brain-tip-title {
+            font-weight: 800;
+            color: #2E7D32;
+            font-size: 14pt;
+            margin-bottom: 10px;
+            display: flex; align-items: center;
+            gap: 10px;
+        }
+        
+        .activity-card {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 3px solid #2196F3;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .activity-title {
+            font-weight: 800;
+            color: #1565C0;
+            font-size: 14pt;
+            margin-bottom: 10px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border: 3px solid #F44336;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .warning-title {
+            font-weight: 800;
+            color: #C62828;
+            font-size: 14pt;
+            margin-bottom: 10px;
+        }
+        
+        .mom-quote {
+            background: #FCE4EC;
+            border: 3px dashed #E91E63;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            text-align: center;
+            position: relative;
+        }
+        
+        .mom-quote::before { content: '👩'; font-size: 30pt; position: absolute; top: -20px; left: 20px; }
+        
+        ul, ol { margin: 15px 0 15px 30px; }
+        li { margin-bottom: 10px; }
+        
+        .food-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .food-item {
+            background: #FFF;
+            border: 2px solid #FF9800;
+            border-radius: 15px;
+            padding: 10px 15px;
+            font-size: 11pt;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #FFBE0B 0%, #FFC107 100%);
+            color: #000;
+            padding: 15px;
+            font-weight: 700;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 2px solid #FFF3E0;
+        }
+        
+        tr:last-child td { border-bottom: none; }
+        
+        .emoji-big { font-size: 20pt; }
+        .highlight { background: #FFEB3B; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
+        
+        .chapter-start { page-break-before: always; }
+    </style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="cover">
+    <div class="cover-brain">🧠</div>
+    <div class="cover-content">
+        <div class="cover-icon">👶🧠✨</div>
+        <h1 class="cover-title">What Brains Need<br>Before Preschool</h1>
+        <p class="cover-subtitle">สมองน้อยๆ ต้องการอะไร<br>ก่อนวัยอนุบาล</p>
+        <div class="cover-badge">สำหรับทารก 0-2 ปี</div>
+    </div>
+</div>
+
+<h1>🌟 บทนำ: ทำไมช่วง 0-2 ปีถึงสำคัญที่สุด?</h1>
+
+<div class="mom-quote">
+    "ฉันไม่รู้ว่าลูกฉันเข้าใจอะไรบ้างตอนนี้... แต่ฉันรู้ว่าทุกอย่างที่ฉันทำตอนนี้สำคัญ"
+</div>
+
+<p>เชื่อไหมว่า <span class="highlight">สมองของลูกน้อยพัฒนาเร็วที่สุดในชีวิตช่วง 0-2 ปีนี้</span>! ในช่วงเวลาสั้นๆ นี้ สมองของเขาจะเติบโตถึง 80% ของขนาดสมองผู้ใหญ่เลยนะ</p>
+
+<div class="fun-box">
+    <h3>🎯 สิ่งที่สมองทำในช่วง 0-2 ปี:</h3>
+    <ul>
+        <li><strong>สร้างเซลล์ประสาท</strong> นับล้านๆ เซลล์ต่อวินาที!</li>
+        <li><strong>เชื่อมต่อกัน</strong> เป็นเครือข่ายที่ซับซ้อน</li>
+        <li><strong>เรียนรู้ภาษา</strong> แม้ยังพูดไม่ได้</li>
+        <li><strong>จดจำใบหน้า</strong> ของคนที่รัก</li>
+        <li><strong>เข้าใจอารมณ์</strong> จากเสียงและสีหน้า</li>
+    </ul>
+</div>
+
+<h1>🍎 บทที่ 1: อาหารที่สมองต้องการ</h1>
+
+<h2>สารอาหารสำคัญ 5 อย่าง</h2>
+
+<div class="brain-tip">
+    <div class="brain-tip-title">🥑 ไขมันดี (Good Fats)</div>
+    <p>สมอง 60% เป็นไขมัน! ลูกต้องการ:</p>
+    <div class="food-list">
+        <span class="food-item">🥑 อะโวคาโด</span>
+        <span class="food-item">🐟 ปลาแซลมอน</span>
+        <span class="food-item">🥜 ถั่วบด</span>
+        <span class="food-item">🥚 ไข่แดง</span>
+    </div>
+</div>
+
+<div class="brain-tip">
+    <div class="brain-tip-title">🥛 โปรตีน (Protein)</div>
+    <p>สร้างเซลล์ประสาทใหม่:</p>
+    <div class="food-list">
+        <span class="food-item">🥩 เนื้อบด</span>
+        <span class="food-item">🐔 ไก่บด</span>
+        <span class="food-item">🫘 ถั่วเหลือง</span>
+        <span class="food-item">🧀 ชีส</span>
+    </div>
+</div>
+
+<div class="brain-tip">
+    <div class="brain-tip-title">🫐 สารต้านอนุภาคอิสระ</div>
+    <p>ปกป้องสมองจากความเสื่อม:</p>
+    <div class="food-list">
+        <span class="food-item">🫐 บลูเบอร์รี่</span>
+        <span class="food-item">🍓 สตรอว์เบอร์รี่</span>
+        <span class="food-item">🥦 บรอกโคลี่</span>
+        <span class="food-item">🥕 แครอท</span>
+    </div>
+</div>
+
+<div class="chapter-start"></div>
+
+<h1>😴 บทที่ 2: การนอนคือยาวิเศษของสมอง</h1>
+
+<h2>ทำไมการนอนถึงสำคัญ?</h2>
+
+<p>เวลาลูกนอน สมองไม่ได้ "หยุดทำงาน" นะ! แต่กำลัง <span class="highlight">"ซ่อมแซมและจัดระเบียบ"</span> สิ่งที่เรียนรู้มาทั้งวัน</p>
+
+<div class="activity-card">
+    <div class="activity-title">⏰ ตารางนอนที่เหมาะสม</div>
+    <table>
+        <tr>
+            <th>อายุ</th>
+            <th>นอนกลางวัน</th>
+            <th>นอนกลางคืน</th>
+            <th>รวม</th>
+        </tr>
+        <tr>
+            <td>0-3 เดือน</td>
+            <td>3-5 ครั้ง</td>
+            <td>8-10 ชม.</td>
+            <td>14-17 ชม.</td>
+        </tr>
+        <tr>
+            <td>4-6 เดือน</td>
+            <td>2-3 ครั้ง</td>
+            <td>10-12 ชม.</td>
+            <td>12-15 ชม.</td>
+        </tr>
+        <tr>
+            <td>7-12 เดือน</td>
+            <td>2 ครั้ง</td>
+            <td>10-12 ชม.</td>
+            <td>12-14 ชม.</td>
+        </tr>
+        <tr>
+            <td>1-2 ปี</td>
+            <td>1 ครั้ง</td>
+            <td>11-12 ชม.</td>
+            <td>11-14 ชม.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="fun-box">
+    <h3>💤 สัญญาณว่าลูกง่วง:</h3>
+    <ul>
+        <li>ถูตา หาวบ่อย</li>
+        <li>หงุดหงิด งอแง</li>
+        <li>ไม่สนใจของเล่น</li>
+        <li>เวลาตื่นนอนมากกว่า 2 ชั่วโมง</li>
+    </ul>
+</div>
+
+<div class="chapter-start"></div>
+
+<h1>🎮 บทที่ 3: เล่นแล้วฉลาด!</h1>
+
+<h2>กิจกรรมกระตุ้นสมองตามช่วงอายุ</h2>
+
+<div class="activity-card">
+    <div class="activity-title">👶 0-6 เดือน: โลกใบใหญ่</div>
+    <ul>
+        <li><strong> tummy time:</strong> ให้ลูกนอนคว่ำ 3-5 นาที วันละหลายครั้ง</li>
+        <li><strong>โมบายสีสัน:</strong> แขวนให้ลูกมองตาม</li>
+        <li><strong>ร้องเพลงกล่อม:</strong> ช่วยพัฒนาการได้ยินและภาษา</li>
+        <li><strong>พูดคุยสบตา:</strong> นั่งห่าง 20-30 ซม. ยิ้มและพูด</li>
+    </ul>
+</div>
+
+<div class="activity-card">
+    <div class="activity-title">🧒 6-12 เดือน: สำรวจโลก</div>
+    <ul>
+        <li><strong>peek-a-boo:</strong> เอามือปิดหน้าแล้วเปิดออก</li>
+        <li><strong>ของเล่นเขย่า:</strong> ฝึกจับและประสานงานมือ-ตา</li>
+        <li><strong>อ่านหนังสือรูป:</strong> แม้ยังไม่เข้าใจ แต่ช่วยพัฒนาภาษา</li>
+        <li><strong>กล่องใส่ของ:</strong> หย่อนของเข้ากล่อง ฝึกสมาธิ</li>
+    </ul>
+</div>
+
+<div class="activity-card">
+    <div class="activity-title">🏃 1-2 ปี: นักสำรวจตัวน้อย</div>
+    <ul>
+        <li><strong>เล่นซ่อนหา:</strong> ซ่อนของเล่นแล้วให้หา</li>
+        <li><strong>ต่อบล็อก:</strong> ฝึกจินตนาการและการแก้ปัญหา</li>
+        <li><strong>ระบายสี:</strong> ฝึกกล้ามเนื้อมือและความคิดสร้างสรรค์</li>
+        <li><strong>ร้องเพลงประกอบท่า:</strong> ช่วยพัฒนาภาษาและการเคลื่อนไหว</li>
+    </ul>
+</div>
+
+<div class="chapter-start"></div>
+
+<h1>❌ บทที่ 4: อะไรที่ทำร้ายสมอง?</h1>
+
+<div class="warning-box">
+    <div class="warning-title">⚠️ สิ่งที่ควรหลีกเลี่ยง:</div>
+    <ul>
+        <li><strong>หน้าจอ:</strong> ไม่ควรให้ทารกดูจอเกิน 1 ชั่วโมง/วัน</li>
+        <li><strong>เสียงดัง:</strong> อาจทำร้ายการได้ยิน</li>
+        <li><strong>ความเครียด:</strong> การร้องไห้นานๆ โดยไม่มีคนดูแล</li>
+        <li><strong>อาหารขยะ:</strong> น้ำตาลและเกลือมากเกินไป</li>
+        <li><strong>ความโดดเดี่ยว:</strong> ขาดการมีปฏิสัมพันธ์</li>
+    </ul>
+</div>
+
+<h1>🌈 สรุป: เริ่มต้นวันนี้!</h1>
+
+<div class="fun-box">
+    <h3>✨ 5 สิ่งที่พ่อแม่ทำได้วันนี้:</h3>
+    <ol>
+        <li><strong>ให้อาหารที่ดี</strong> - ผัก ผลไม้ โปรตีน ไขมันดี</li>
+        <li><strong>ให้นอนเพียงพอ</strong> - ตามตารางที่เหมาะสม</li>
+        <li><strong>เล่นด้วยกัน</strong> - ทุกวัน สัก 15-30 นาที</li>
+        <li><strong>พูดคุยเยอะๆ</strong> - แม้ลูกยังตอบไม่ได้</li>
+        <li><strong>อ่านหนังสือ</strong> - เริ่มตั้งแต่วันนี้!</li>
+    </ol>
+</div>
+
+<div class="mom-quote">
+    "ไม่ต้องรอให้พร้อม ไม่ต้องทำให้สมบูรณ์แบบ<br>แค่รักและใส่ใจ ก็เพียงพอแล้ว 💕"
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; background: #FFF8E1; border-radius: 15px;">
+    <p style="font-size: 14pt; font-weight: 700; color: #FF9800;">What Brains Need Before Preschool</p>
+    <p style="color: #666;">© 2024 Pop Playground</p>
+    <p style="font-size: 30pt; margin-top: 10px;">🧠✨👶</p>
+</div>
+
+</body>
+</html>

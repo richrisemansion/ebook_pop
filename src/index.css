@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Memphis Color Palette */
+    --hot-pink: 331 100% 50%;
+    --electric-yellow: 45 100% 52%;
+    --vivid-purple: 263 82% 58%;
+    --bright-green: 158 100% 51%;
+    --cyan-blue: 217 100% 61%;
+    --orange-pop: 21 97% 50%;
+    
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 331 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 100% 52%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 158 100% 51%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 331 100% 50%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-foreground;
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  /* Memphis Sticker Effect */
+  .sticker {
+    @apply relative;
+    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 1));
+  }
+  
+  .sticker-sm {
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 1));
+  }
+  
+  .sticker-lg {
+    filter: drop-shadow(8px 8px 0px rgba(0, 0, 0, 1));
+  }
+  
+  /* Memphis Blob Shapes */
+  .blob {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  
+  .blob-2 {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  
+  .blob-3 {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+  
+  /* Memphis Pattern Backgrounds */
+  .pattern-squiggly {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 30 Q 20 10, 30 30 T 50 30' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
+  }
+  
+  .pattern-dots {
+    background-image: radial-gradient(circle, #000 2px, transparent 2px);
+    background-size: 20px 20px;
+  }
+  
+  .pattern-triangles {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='20,5 35,35 5,35' fill='none' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: 40px 40px;
+  }
+  
+  .pattern-grid {
+    background-image: 
+      linear-gradient(to right, #000 2px, transparent 2px),
+      linear-gradient(to bottom, #000 2px, transparent 2px);
+    background-size: 40px 40px;
+  }
+  
+  .pattern-zigzag {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+    background-size: 40px 20px;
+  }
+  
+  /* Memphis Colors */
+  .bg-memphis-pink { background-color: #FF006E; }
+  .bg-memphis-yellow { background-color: #FFBE0B; }
+  .bg-memphis-purple { background-color: #8338EC; }
+  .bg-memphis-green { background-color: #06FFA5; }
+  .bg-memphis-blue { background-color: #3A86FF; }
+  .bg-memphis-orange { background-color: #FB5607; }
+  
+  .text-memphis-pink { color: #FF006E; }
+  .text-memphis-yellow { color: #FFBE0B; }
+  .text-memphis-purple { color: #8338EC; }
+  .text-memphis-green { color: #06FFA5; }
+  .text-memphis-blue { color: #3A86FF; }
+  .text-memphis-orange { color: #FB5607; }
+  
+  .border-memphis-pink { border-color: #FF006E; }
+  .border-memphis-yellow { border-color: #FFBE0B; }
+  .border-memphis-purple { border-color: #8338EC; }
+  .border-memphis-green { border-color: #06FFA5; }
+  .border-memphis-blue { border-color: #3A86FF; }
+  .border-memphis-orange { border-color: #FB5607; }
+  
+  /* Memphis Button Styles */
+  .btn-memphis {
+    @apply px-6 py-3 font-bold text-white border-4 border-black rounded-xl;
+    font-family: 'Fredoka', sans-serif;
+    box-shadow: 6px 6px 0px 0px #000;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-memphis:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px 0px #000;
+  }
+  
+  .btn-memphis:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px 0px #000;
+  }
+  
+  /* Memphis Card */
+  .card-memphis {
+    @apply bg-white border-4 border-black rounded-2xl p-6;
+    box-shadow: 8px 8px 0px 0px #000;
+  }
+  
+  /* Memphis Input */
+  .input-memphis {
+    @apply w-full px-4 py-3 bg-white border-4 border-black rounded-xl;
+    font-family: 'Nunito', sans-serif;
+    box-shadow: 4px 4px 0px 0px #000;
+    transition: all 0.2s ease;
+  }
+  
+  .input-memphis:focus {
+    outline: none;
+    box-shadow: 2px 2px 0px 0px #000;
+    transform: translate(2px, 2px);
+  }
+  
+  /* Memphis Section Backgrounds */
+  .section-pink { @apply bg-memphis-pink; }
+  .section-yellow { @apply bg-memphis-yellow; }
+  .section-purple { @apply bg-memphis-purple; }
+  .section-green { @apply bg-memphis-green; }
+  .section-blue { @apply bg-memphis-blue; }
+  .section-orange { @apply bg-memphis-orange; }
+  
+  /* Rotated Elements */
+  .rotate-memphis-1 { transform: rotate(-3deg); }
+  .rotate-memphis-2 { transform: rotate(3deg); }
+  .rotate-memphis-3 { transform: rotate(-5deg); }
+  .rotate-memphis-4 { transform: rotate(5deg); }
+  
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+  
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-2deg); }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+  
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float-delayed 5s ease-in-out infinite;
+  }
+  
+  .animate-wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  
+  /* Memphis Decorative Elements */
+  .memphis-circle {
+    @apply rounded-full border-4 border-black;
+  }
+  
+  .memphis-triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 45px solid currentColor;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 1));
+  }
+  
+  .memphis-zigzag {
+    @apply relative;
+    height: 20px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      currentColor 10px,
+      currentColor 20px
+    );
+  }
+  
+  /* Age Badge */
+  .age-badge {
+    @apply inline-block px-3 py-1 text-sm font-bold text-white border-2 border-black rounded-full;
+    font-family: 'Fredoka', sans-serif;
+    box-shadow: 3px 3px 0px 0px #000;
+  }
+  
+  /* Price Tag */
+  .price-tag {
+    @apply inline-block px-4 py-2 text-xl font-bold text-white border-4 border-black rounded-xl;
+    font-family: 'Fredoka', sans-serif;
+    box-shadow: 4px 4px 0px 0px #000;
+  }
+  
+  /* Category Tab */
+  .category-tab {
+    @apply px-6 py-3 font-bold border-4 border-black rounded-full cursor-pointer;
+    font-family: 'Fredoka', sans-serif;
+    box-shadow: 4px 4px 0px 0px #000;
+    transition: all 0.2s ease;
+  }
+  
+  .category-tab:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000;
+  }
+  
+  .category-tab.active {
+    @apply text-white;
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+  
+  /* Cart Badge */
+  .cart-badge {
+    @apply absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-sm font-bold text-white bg-memphis-pink border-2 border-black rounded-full;
+    font-family: 'Fredoka', sans-serif;
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #FFBE0B;
+    border-left: 3px solid #000;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #FF006E;
+    border: 3px solid #000;
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8338EC;
+  }
+}
+
+@layer utilities {
+  .text-shadow-memphis {
+    text-shadow: 4px 4px 0px #000;
+  }
+  
+  .text-shadow-memphis-sm {
+    text-shadow: 2px 2px 0px #000;
+  }
+}

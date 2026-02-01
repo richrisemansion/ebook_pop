@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Crying is a Language</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 1.5cm; @bottom-center { content: counter(page); font-size: 10pt; color: #8338EC; font-weight: bold; } }
+        @page :first { margin: 0; @bottom-center { content: none; } }
+        body { font-family: 'Noto Sans Thai', sans-serif; font-size: 12pt; line-height: 1.9; color: #333; }
+        
+        .cover { width: 210mm; height: 297mm; margin: 0; position: relative; overflow: hidden; page-break-after: always; background: linear-gradient(135deg, #8338EC 0%, #9C27B0 50%, #E1BEE7 100%); }
+        .cover-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 85%; z-index: 10; }
+        .cover-icon { font-size: 100pt; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        .cover-title { font-size: 34pt; font-weight: 800; color: #fff; text-shadow: 4px 4px 0 #4A148C; margin-bottom: 10px; }
+        .cover-subtitle { font-size: 16pt; color: #F3E5F5; margin-bottom: 40px; font-weight: 600; }
+        .cover-badge { display: inline-block; background: #FF006E; color: #fff; padding: 10px 25px; border-radius: 30px; font-weight: 700; }
+        
+        h1 { font-size: 22pt; font-weight: 800; color: #8338EC; margin: 30px 0 15px; padding: 15px; background: #F3E5F5; border-radius: 15px; border-left: 6px solid #8338EC; }
+        h2 { font-size: 16pt; font-weight: 700; color: #7B1FA2; margin: 25px 0 12px; }
+        
+        .cry-type { background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%); border: 3px solid #9C27B0; border-radius: 20px; padding: 20px; margin: 15px 0; position: relative; }
+        .cry-type-icon { font-size: 40pt; position: absolute; top: -20px; right: 20px; }
+        .cry-type-title { font-weight: 800; color: #7B1FA2; font-size: 14pt; margin-bottom: 8px; }
+        .cry-sound { background: #fff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: 700; color: #8338EC; margin-bottom: 10px; }
+        
+        .tip-box { background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); border: 3px solid #4CAF50; border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .tip-title { font-weight: 800; color: #2E7D32; font-size: 14pt; margin-bottom: 10px; }
+        
+        .mom-story { background: #FFF3E0; border: 3px dashed #FF9800; border-radius: 20px; padding: 20px; margin: 20px 0; font-style: italic; }
+        .mom-story::before { content: '👩‍🍼 '; font-size: 20pt; }
+        
+        .checklist { background: #E3F2FD; border-radius: 15px; padding: 20px; margin: 15px 0; }
+        .checklist-item { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+        .checklist-item::before { content: '☐'; font-size: 20pt; color: #2196F3; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: #fff; border-radius: 15px; overflow: hidden; }
+        th { background: linear-gradient(135deg, #8338EC 0%, #9C27B0 100%); color: #fff; padding: 15px; font-weight: 700; }
+        td { padding: 12px 15px; border-bottom: 2px solid #F3E5F5; }
+        tr:last-child td { border-bottom: none; }
+        
+        .highlight { background: #E1BEE7; padding: 2px 8px; border-radius: 5px; font-weight: 600; }
+        .emoji-big { font-size: 18pt; }
+        .chapter-start { page-break-before: always; }
+        
+        .calm-box { background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%); border: 3px solid #00BCD4; border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .calm-title { font-weight: 800; color: #00838F; font-size: 14pt; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="cover-content">
+        <div class="cover-icon">😢💬✨</div>
+        <h1 class="cover-title">Crying is<br>a Language</h1>
+        <p class="cover-subtitle">การร้องไห้คือภาษา<br>ที่ลูกใช้สื่อสารกับเรา</p>
+        <div class="cover-badge">ถอดรหัสเสียงร้องของทารก</div>
+    </div>
+</div>
+
+<h1>💜 บทนำ: ทำไมลูกถึงร้องไห้?</h1>
+
+<div class="mom-story">
+    "ตอนแรกฉันรู้สึกเครียดมากทุกครั้งที่ลูกร้องไห้ แต่พอเข้าใจว่าการร้องไห้คือวิธีสื่อสารของเขา ฉันก็เริ่ม "ฟัง" และเข้าใจลูกได้มากขึ้น"
+</div>
+
+<p>เชื่อไหมว่า <span class="highlight">ทารกไม่ได้ร้องไห้เพื่อแกล้งเรา</span>! การร้องไห้เป็นภาษาเดียวที่เขามีในช่วงเดือนแรก และทุกเสียงร้องมีความหมาย</p>
+
+<h1>🔊 บทที่ 1: 5 ภาษาการร้องไห้</h1>
+
+<div class="cry-type">
+    <div class="cry-type-icon">🍼</div>
+    <div class="cry-type-title">1. หิวนม (Neh)</div>
+    <div class="cry-sound">"เน่ห์~ เน่ห์~"</div>
+    <p><strong>ฟังยังไง:</strong> เสียงนุ่มนวล คล้ายเสียง "เน" ตอนเริ่มดูดนม</p>
+    <p><strong>แก้ยังไง:</strong> ให้นมทันที! อย่าปล่อยให้ร้องนาน</p>
+</div>
+
+<div class="cry-type">
+    <div class="cry-type-icon">😴</div>
+    <div class="cry-type-title">2. ง่วงนอน (Owh)</div>
+    <div class="cry-sound">"โอวห์~ โอวห์~"</div>
+    <p><strong>ฟังยังไง:</strong> เสียงเหมือนกำลังหาว นุ่มๆ ยาวๆ</p>
+    <p><strong>แก้ยังไง:</strong> พาไปนอน ลดแสง ร้องเพลงกล่อม</p>
+</div>
+
+<div class="cry-type">
+    <div class="cry-type-icon">🥵</div>
+    <div class="cry-type-title">3. ไม่สบายตัว (Heh)</div>
+    <div class="cry-sound">"เฮ่ห์~ เฮ่ห์~"</div>
+    <p><strong>ฟังยังไง:</strong> เสียงสั้น หายใจถี่ กระสับกระส่าย</p>
+    <p><strong>แก้ยังไง:</strong> ตรวจผ้าอ้อม ดูว่าร้อนหรือหนาวเกินไป</p>
+</div>
+
+<div class="cry-type">
+    <div class="cry-type-icon">💨</div>
+    <div class="cry-type-title">4. ท้องอืด (Eairh)</div>
+    <div class="cry-sound">"แอร์~ แอร์~"</div>
+    <p><strong>ฟังยังไง:</strong> เสียงลึกจากท้อง คล้ายเสียงปลดทุกข์</p>
+    <p><strong>แก้ยังไง:</strong> กอดให้เรอ นวดท้องเบาๆ ยกขาขึ้น</p>
+</div>
+
+<div class="cry-type">
+    <div class="cry-type-icon">🌬️</div>
+    <div class="cry-type-title">5. อยากเรอ (Eh)</div>
+    <div class="cry-sound">"เอ่ห์~ เอ่ห์~"</div>
+    <p><strong>ฟังยังไง:</strong> เสียงสั้น อัดแน่น หายใจไม่สะดวก</p>
+    <p><strong>แก้ยังไง:</strong> กอดให้เรอ ตบเบาๆ ที่หลัง</p>
+</div>
+
+<div class="chapter-start"></div>
+
+<h1>🧘 บทที่ 2: เทคนิค Calming ที่ได้ผล</h1>
+
+<div class="calm-box">
+    <div class="calm-title">🤱 5 ขั้นตอน 5 S's</div>
+    <ol>
+        <li><strong>Swaddle (ห่อ):</strong> ห่อตัวแน่นๆ ให้รู้สึกปลอดภัย</li>
+        <li><strong>Side/Stomach (ตะแคง):</strong> จับตะแคงหรือคว่ำ (เฉพาะตอนกอด)</li>
+        <li><strong>Shush (เสียงซู่):</strong> เป่าหรือทำเสียง "ซู่" ดังๆ หูลูก</li>
+        <li><strong>Swing (โยก):</strong> โยกเบาๆ หรือเขย่าน้อยๆ</li>
+        <li><strong>Suck (ดูด):</strong> ให้ดูดนิ้วหรือจุกนม</li>
+    </ol>
+</div>
+
+<div class="tip-box">
+    <div class="tip-title">💡 เคล็ดลับสำคัญ</div>
+    <p>ทารกชอบ <span class="highlight">เสียงดังกว่าที่เราคิด</span>! ในครรภ์ เขาได้ยินเสียงหัวใจแม่ดังกว่าเครื่องดูดฝุ่น ดังนั้นเสียง "ซู่" ดังๆ จะช่วยให้เขารู้สึกเหมือนอยู่ในท้องแม่</p>
+</div>
+
+<h1>📋 บทที่ 3: Checklist ตอนลูกร้อง</h1>
+
+<div class="checklist">
+    <div class="checklist-item">เช็คเวลาให้นมครั้งล่าสุด</div>
+    <div class="checklist-item">เช็คผ้าอ้อม</div>
+    <div class="checklist-item">เช็คอุณหภูมิ (ร้อน/หนาว?)</div>
+    <div class="checklist-item">เช็คว่าง่วงนอนไหม</div>
+    <div class="checklist-item">เช็คท้องอืด/อยากเรอ</div>
+    <div class="checklist-item">เช็คว่ามีไข้ไหม</div>
+    <div class="checklist-item">เช็คว่าต้องการกอด</div>
+</div>
+
+<div class="chapter-start"></div>
+
+<h1>⚠️ บทที่ 4: เมื่อไหร่ต้องกังวล?</h1>
+
+<table>
+    <tr>
+        <th>สถานการณ์</th>
+        <th>ทำไงดี</th>
+    </tr>
+    <tr>
+        <td>ร้องไห้ต่อเนื่องเกิน 3 ชั่วโมง</td>
+        <td>ปรึกษาแพทย์ทันที</td>
+    </tr>
+    <tr>
+        <td>ร้องเสียงแหลมผิดปกติ</td>
+        <td>ไปโรงพยาบาลเลย</td>
+    </tr>
+    <tr>
+        <td>ร้อง + มีไข้สูง</td>
+        <td>พบแพทย์ด่วน</td>
+    </tr>
+    <tr>
+        <td>ร้อง + อาเจียน/ท้องเสีย</td>
+        <td>ต้องเช็คอาการ</td>
+    </tr>
+</table>
+
+<h1>💕 สรุป: รักและเข้าใจ</h1>
+
+<div class="mom-story">
+    "ไม่มีพ่อแม่คนไหนเข้าใจลูกได้ 100% ตั้งแต่วันแรก แต่ทุกวันที่เราพยายาม เราก็เรียนรู้กันและกันมากขึ้น"
+</div>
+
+<div class="tip-box">
+    <div class="tip-title">✨ สิ่งสำคัญที่ต้องจำ</div>
+    <ul>
+        <li>การร้องไห้ <strong>ไม่ใช่</strong> การแกล้ง</li>
+        <li>ทุกเสียงมีความหมาย ลองฟังดีๆ</li>
+        <li>ตอบสนองเร็ว = ลูกรู้สึกปลอดภัย</li>
+        <li>ไม่ต้องกลัวที่จะ "ตกขบวน" ลูกจะสอนเราเอง</li>
+    </ul>
+</div>
+
+<div style="text-align: center; margin-top: 40px; padding: 20px; background: #F3E5F5; border-radius: 15px;">
+    <p style="font-size: 14pt; font-weight: 700; color: #8338EC;">Crying is a Language</p>
+    <p style="color: #666;">© 2024 Pop Playground</p>
+    <p style="font-size: 30pt; margin-top: 10px;">😢💜👶</p>
+</div>
+
+</body>
+</html>
