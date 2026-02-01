@@ -305,25 +305,36 @@ const AdminBookFormSection: React.FC<AdminBookFormSectionProps> = ({ onBack, edi
                                 </button>
                             )}
 
-                            {existingBook?.pdfUrl && !pdfFile && (
+                            {isEditing && !pdfFile && (
                                 <div className="mt-3 p-3 bg-gray-50 border-2 border-black/10 rounded-xl flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-8 h-8 bg-memphis-purple/20 text-memphis-purple rounded-lg flex items-center justify-center">
+                                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${(existingBook?.pdfUrl || (existingBook as any)?.pdf_url)
+                                                ? 'bg-memphis-purple/20 text-memphis-purple'
+                                                : 'bg-red-100 text-red-500'
+                                            }`}>
                                             <FileText className="w-4 h-4" />
                                         </div>
                                         <div className="text-sm">
-                                            <p className="font-semibold text-black/80">ไฟล์ปัจจุบัน</p>
-                                            <a
-                                                href={existingBook.pdfUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-xs text-memphis-blue hover:underline font-medium"
-                                            >
-                                                คลิกเพื่อดูไฟล์เดิม
-                                            </a>
+                                            <p className="font-semibold text-black/80">
+                                                {(existingBook?.pdfUrl || (existingBook as any)?.pdf_url) ? 'ไฟล์ปัจจุบัน' : 'ยังไม่ได้อัปโหลดไฟล์ PDF'}
+                                            </p>
+                                            {(existingBook?.pdfUrl || (existingBook as any)?.pdf_url) ? (
+                                                <a
+                                                    href={existingBook?.pdfUrl || (existingBook as any)?.pdf_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-xs text-memphis-blue hover:underline font-medium"
+                                                >
+                                                    คลิกเพื่อดูไฟล์เดิม
+                                                </a>
+                                            ) : (
+                                                <span className="text-xs text-red-400">กรุณาอัปโหลดไฟล์เพื่อพร้อมจำหน่าย</span>
+                                            )}
                                         </div>
                                     </div>
-                                    <span className="text-xs text-black/40">อัปโหลดใหม่เพื่อแทนที่</span>
+                                    <span className="text-xs text-black/40">
+                                        {(existingBook?.pdfUrl || (existingBook as any)?.pdf_url) ? 'อัปโหลดใหม่เพื่อแทนที่' : 'เลือกไฟล์ .pdf'}
+                                    </span>
                                 </div>
                             )}
                         </div>
