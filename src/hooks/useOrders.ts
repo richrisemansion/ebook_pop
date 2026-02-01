@@ -182,6 +182,24 @@ export function useAdminOrders(): UseAdminOrdersReturn {
         }
 
         try {
+            // 1. Call Edge Function to send email
+            console.log('Invoking send-order-email for order:', id);
+            const { data: emailData, error: emailError } = await supabase.functions.invoke('send-order-email', {
+                body: { orderId: id }
+            });
+
+            if (emailError) {
+                console.error('Error sending email via Edge Function:', emailError);
+                // We might still want to mark as sent manually if it's a transient error, 
+                // but for now let's treat it as a failure so user can retry.
+                // Or maybe we Log it but continue updating DB status if the function succeeded partially?
+                // Let's assume if function fails, we tell user.
+                throw emailError;
+            }
+
+            console.log('Email sent successfully:', emailData);
+
+            // 2. Update status in DB
             const { error: updateError } = await supabase
                 .from('orders')
                 .update({

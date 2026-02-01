@@ -40,36 +40,43 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
     });
 
     const handleVerifyAndSend = async (orderId: string) => {
-        const loadingToast = toast.loading('กำลังดำเนินการ...');
+        // Prevent double click
+        if (loading) return;
+
+        const isPending = orders.find(o => o.id === orderId)?.status === 'pending';
+        const loadingToast = toast.loading(isPending ? 'กำลังยืนยันยอดเงิน...' : 'กำลังดำเนินการ...');
 
         try {
             // 1. Verify Payment
+            console.log('Verifying order:', orderId);
             const verifySuccess = await updateOrderStatus(orderId, 'verified');
             if (!verifySuccess) {
                 toast.error('ยืนยันยอดเงินไม่สำเร็จ', { id: loadingToast });
                 return;
             }
 
-            // 2. Send PDFs
+            // 2. Send PDFs (Auto send)
+            console.log('Sending PDFs for order:', orderId);
             const sendSuccess = await markPdfsSent(orderId);
             if (sendSuccess) {
-                toast.success('ยืนยันยอดเงินและส่ง PDF เรียบร้อยแล้ว!', { id: loadingToast });
-                setSelectedOrder(null); // Close dialog
+                toast.success('ทำรายการสำเร็จ! (ยืนยันและส่ง PDF แล้ว)', { id: loadingToast });
+                setSelectedOrder(null); // Close dialog explicitly
             } else {
-                toast.warning('ยืนยันยอดเงินแล้ว แต่ส่ง PDF ไม่สำเร็จ กรุณาลองใหม่', { id: loadingToast });
+                toast.warning('ยืนยันยอดเงินแล้ว แต่ส่ง PDF ไม่สำเร็จ กรุณากดส่งใหม่', { id: loadingToast });
+                // Don't close dialog so they can try "Resend PDF"
             }
         } catch (error) {
-            console.error(error);
-            toast.error('เกิดข้อผิดพลาด', { id: loadingToast });
+            console.error('Error in handleVerifyAndSend:', error);
+            toast.error('เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ', { id: loadingToast });
         }
     };
 
     const handleReject = async (orderId: string) => {
-        if (!confirm('ยืนยันที่จะปฏิเสธคำสั่งซื้อนี้?')) return;
+        if (!confirm('ยืนยันที่จะปฏิเสธ/ยกเลิกคำสั่งซื้อนี้?')) return;
 
-        const success = await updateOrderStatus(orderId, 'cancelled', 'Slip ไม่ถูกต้อง');
+        const success = await updateOrderStatus(orderId, 'cancelled', 'Admin ยกเลิก/ปฏิเสธ');
         if (success) {
-            toast.success('ปฏิเสธคำสั่งซื้อแล้ว');
+            toast.success('ยกเลิกคำสั่งซื้อแล้ว');
             setSelectedOrder(null);
         } else {
             toast.error('เกิดข้อผิดพลาด');
