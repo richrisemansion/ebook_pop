@@ -34,7 +34,8 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
         const matchesSearch =
             order.order_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
             order.customer_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            order.customer_email.toLowerCase().includes(searchTerm.toLowerCase());
+            order.customer_email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            order.customer_phone.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesStatus && matchesSearch;
     });
 
@@ -124,7 +125,7 @@ const AdminOrdersSection: React.FC<AdminOrdersSectionProps> = ({ onBack }) => {
                                 type="text"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                placeholder="ค้นหา Order ID, ชื่อ, อีเมล..."
+                                placeholder="ค้นหา Order ID, ชื่อ, อีเมล, เบอร์โทร..."
                                 className="w-full pl-12 pr-4 py-3 bg-gray-50 border-3 border-black rounded-xl focus:outline-none focus:bg-white transition-colors"
                             />
                         </div>
