@@ -18,6 +18,7 @@ import { useCartStore } from '@/store/cartStore';
 import { useCreateOrder } from '@/hooks/useOrders';
 import { Toaster } from '@/components/ui/sonner';
 import { toast } from 'sonner';
+import { SEO } from '@/components/SEO';
 
 type Page = 'home' | 'books' | 'cart' | 'checkout' | 'payment' | 'upload-slip' | 'success' | 'contact' | 'admin-login' | 'admin-dashboard';
 
@@ -305,8 +306,24 @@ function App() {
   // Don't show navigation on admin pages
   const isAdminPage = currentPage === 'admin-login' || currentPage === 'admin-dashboard';
 
+  // Dynamic SEO Title
+  const getPageTitle = () => {
+    switch (currentPage) {
+      case 'books': return 'หนังสือทั้งหมด';
+      case 'cart': return 'ตะกร้าสินค้า';
+      case 'checkout': return 'ชำระเงิน';
+      case 'payment': return 'ชำระเงิน';
+      case 'upload-slip': return 'แจ้งชำระเงิน';
+      case 'success': return 'สั่งซื้อสำเร็จ';
+      case 'admin-login': return 'เข้าสู่ระบบแอดมิน';
+      case 'admin-dashboard': return 'จัดการคำสั่งซื้อ';
+      default: return 'หน้าแรก'; // 'Pop Playground' will be appended by SEO component
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO title={getPageTitle()} />
       {!isAdminPage && (
         <Navigation
           onCartClick={handleCartClick}
