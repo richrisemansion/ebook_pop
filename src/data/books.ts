@@ -49,6 +49,7 @@ export const books: Book[] = [
     price: 299,
     originalPrice: 399,
     image: '/images/book-0-1.jpg',
+    pdfUrl: '/pdfs/psychology-of-babies.pdf',
     category: 'baby',
     ageRange: '0-2 ปี',
     pages: 128,
@@ -69,6 +70,7 @@ export const books: Book[] = [
     description: 'สมองของทารกพัฒนารวดเร็วที่สุดในช่วง 0-2 ปี หนังสือเล่มนี้จะบอกคุณว่าควรทำอย่างไรเพื่อกระตุ้นพัฒนาการที่เหมาะสม',
     price: 349,
     image: '/images/book-0-2.jpg',
+    pdfUrl: '/pdfs/what-brains-need.html',
     category: 'baby',
     ageRange: '0-2 ปี',
     pages: 156,
@@ -89,6 +91,7 @@ export const books: Book[] = [
     description: 'ทารกไม่สามารถพูดได้ แต่เขาสื่อสารผ่านการร้องไห้ เรียนรู้ที่จะ "ฟัง" และเข้าใจว่าลูกต้องการอะไร',
     price: 279,
     image: '/images/book-0-3.jpg',
+    pdfUrl: '/pdfs/crying-is-language.html',
     category: 'baby',
     ageRange: '0-2 ปี',
     pages: 112,
@@ -101,7 +104,7 @@ export const books: Book[] = [
       'เทคนิคจากพยาบาลเด็ก'
     ]
   },
-  
+
   // วัยอนุบาล (3-5 ปี)
   {
     id: 'preschool-1',
@@ -111,6 +114,7 @@ export const books: Book[] = [
     price: 329,
     originalPrice: 399,
     image: '/images/book-3-1.jpg',
+    pdfUrl: '/pdfs/little-minds-curiosity.html',
     category: 'preschool',
     ageRange: '3-5 ปี',
     pages: 144,
@@ -131,6 +135,7 @@ export const books: Book[] = [
     description: 'เด็กวัยนี้เริ่มมีความคิดเป็นของตัวเอง และมักจะโต้เถียง เรียนรู้วิธีจัดการกับอารมณ์และตั้งขอบเขตที่เหมาะสม',
     price: 299,
     image: '/images/book-3-2.jpg',
+    pdfUrl: '/pdfs/when-kids-argue.html',
     category: 'preschool',
     ageRange: '3-5 ปี',
     pages: 132,
@@ -150,6 +155,7 @@ export const books: Book[] = [
     description: 'การเล่นคือการเรียนรู้ที่ดีที่สุดสำหรับเด็ก ค้นพบวิธีเล่นที่ช่วยพัฒนาทักษะต่างๆ อย่างมีประสิทธิภาพ',
     price: 359,
     image: '/images/book-3-3.jpg',
+    pdfUrl: '/pdfs/play-makes-smart.html',
     category: 'preschool',
     ageRange: '3-5 ปี',
     pages: 168,
@@ -163,7 +169,7 @@ export const books: Book[] = [
     ],
     isNew: true
   },
-  
+
   // วัยประถม (6-9 ปี)
   {
     id: 'elementary-1',
@@ -173,6 +179,7 @@ export const books: Book[] = [
     price: 379,
     originalPrice: 459,
     image: '/images/book-6-1.jpg',
+    pdfUrl: '/pdfs/confidence-starts-home.html',
     category: 'elementary',
     ageRange: '6-9 ปี',
     pages: 176,
@@ -193,6 +200,7 @@ export const books: Book[] = [
     description: 'ปัญหาการปรับตัวในโรงเรียนเป็นเรื่องปกติ หนังสือเล่มนี้จะช่วยคุณเข้าใจและแก้ไขปัญหาร่วมกับลูก',
     price: 349,
     image: '/images/book-6-2.jpg',
+    pdfUrl: '/pdfs/when-kids-dont-want-school.html',
     category: 'elementary',
     ageRange: '6-9 ปี',
     pages: 152,
@@ -212,6 +220,7 @@ export const books: Book[] = [
     description: 'การบ้านไม่ใช่เรื่องน่าเบื่ออีกต่อไป เรียนรู้วิธีสร้างนิสัยการเรียนรู้และจัดการเวลาอย่างมีประสิทธิภาพ',
     price: 329,
     image: '/images/book-6-3.jpg',
+    pdfUrl: '/pdfs/psychology-homework.html',
     category: 'elementary',
     ageRange: '6-9 ปี',
     pages: 144,
@@ -224,7 +233,7 @@ export const books: Book[] = [
       'รางวัลที่เหมาะสม'
     ]
   },
-  
+
   // วัยก่อนวัยรุ่น (10-12 ปี)
   {
     id: 'preteen-1',
@@ -234,6 +243,7 @@ export const books: Book[] = [
     price: 399,
     originalPrice: 499,
     image: '/images/book-10-1.jpg',
+    pdfUrl: '/pdfs/understanding-puberty.html',
     category: 'preteen',
     ageRange: '10-12 ปี',
     pages: 192,
@@ -254,6 +264,7 @@ export const books: Book[] = [
     description: 'โลกดิจิตอลมีทั้งข้อดีและข้อเสีย เรียนรู้วิธีช่วยลูกใช้เทคโนโลยีอย่างสมดุลและปลอดภัย',
     price: 379,
     image: '/images/book-10-2.jpg',
+    pdfUrl: '/pdfs/social-media-teen-minds.html',
     category: 'preteen',
     ageRange: '10-12 ปี',
     pages: 168,
@@ -274,6 +285,7 @@ export const books: Book[] = [
     description: 'ช่วงวัยนี้เป็นเวลาที่ดีในการสร้างความฝันและเป้าหมาย สนับสนุนลูกให้กล้าฝันและลงมือทำ',
     price: 359,
     image: '/images/book-10-3.jpg',
+    pdfUrl: '/pdfs/dreams-and-goals.html',
     category: 'preteen',
     ageRange: '10-12 ปี',
     pages: 156,

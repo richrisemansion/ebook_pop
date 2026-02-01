@@ -361,6 +361,21 @@ export function useCreateOrder(): UseCreateOrderReturn {
             // Send Telegram notification to admin
             if (updatedOrder) {
                 try {
+                    // Generate a signed URL for the slip image to send to Telegram
+                    // Give it a long expiry (e.g., 7 days) so admin can view it later
+                    let slipUrlForTelegram = '';
+                    if (updatedOrder.slip_image_url) {
+                        const path = updatedOrder.slip_image_url.replace('order-slips/', '');
+                        const { data: signedData } = await supabase
+                            .storage
+                            .from('order-slips')
+                            .createSignedUrl(path, 60 * 60 * 24 * 7); // 7 days
+
+                        if (signedData?.signedUrl) {
+                            slipUrlForTelegram = signedData.signedUrl;
+                        }
+                    }
+
                     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
                     await fetch(`${supabaseUrl}/functions/v1/notify-telegram`, {
                         method: 'POST',
@@ -373,6 +388,7 @@ export function useCreateOrder(): UseCreateOrderReturn {
                             customerPhone: updatedOrder.customer_phone,
                             totalAmount: updatedOrder.total_amount,
                             itemCount: updatedOrder.items?.length || 0,
+                            slipImageUrl: slipUrlForTelegram // Send the full signed URL
                         }),
                     });
                 } catch (notifyError) {
